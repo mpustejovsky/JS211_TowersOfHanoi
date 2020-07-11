@@ -12,7 +12,7 @@
 }
 
 [data-row].red {
-  background-color: #f6c5c5;
+    background-color: #f6c5c5;
 }
 
 [data-row].yellow {
@@ -38,25 +38,66 @@
 
 [data-color="blue"] {
   height: 33px;
+  width: 25px;
   background-color: blue;
 }
 
 [data-color="green"] {
-  height: 33px;
+  height: 40px;
+  width: 50px;
   background-color: green;
 }
 
 [data-color="red"] {
-  height: 33px;
+  height: 50px;
+  width: 75px;
   background-color: red;
 }
 
 [data-color="yellow"] {
-  height: 33px;
+  height: 60px;
+  width: 100px;
   background-color: yellow;
 }
 
 #announce-game-won {
   font-size: 50px;
   text-align: center;
+}
+
+#scoreboard{
+  display: grid;
+  grid-template-columns: 30% 10% 20% 30% 10%;
+  grid-template-areas: 
+  "title title title title title"
+  "nwins ascore bspace statsW stats2";
+  font-size: 20px;
+  
+}
+#titleBoard{
+  grid-area: title;
+  text-align: center;
+  font-size: 40px;
+}
+#numberWins {
+  grid-area: nwins;
+  
+}
+
+#blanksspace {
+  grid-area: bspace;
+}
+#scoreboard p{
+  color: blue;
+}
+
+#actualScores{
+  grid-area: ascore;
+}
+#statsWords{
+  grid-area: statsW;
+
+}
+#stats {
+  grid-area: stats2;
 }

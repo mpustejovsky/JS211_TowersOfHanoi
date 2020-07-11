@@ -29,29 +29,119 @@ const printStacks = () => {
   console.log("c: " + stacks.c);
 }
 
-// Next, what do you think this function should do?
-const movePiece = () => {
-  // Your code here
 
+const movePiece = (startStack,endStack) => {
+
+    let lastItem = stacks[startStack].pop();
+    stacks[endStack].push(lastItem)
+    
+ 
 }
 
 // Before you move, should you check if the move it actually allowed? Should 3 be able to be stacked on 2
-const isLegal = () => {
-  // Your code here
+const isLegal = (startStack, endStack) => {
+  // check to see if there is a disk on the start stack
+ const iterator=stacks[startStack].values();
+ const iterator2=stacks[endStack].values();
+ let diskTotalValue =0;
+ let startStackSmallest=4;
+ let endStackLargest=0;
 
+
+ //loop runs through the array assocated with the start tower and adds the total value of the 
+ //tower.  If 0 then no disk are on the tower.  Also stores the smallest disk so it can be checked
+ //against the end tower.
+ for (const value of iterator){
+   diskTotalValue=diskTotalValue+value
+   if (value<startStackSmallest&&value!=''&&value!=null){startStackSmallest=value}
+   }
+ if (diskTotalValue==0){
+  return false; }
+ //end of checking to see if there was a disk on the start tower
+ 
+ //This section checks the disk on the end tower is larger than the one being moved
+ for (const value of iterator2){
+  if (value>endStackLargest){endStackLargest=value}
+ }
+  
+        
+        if (endStackLargest==0 || (endStackLargest>startStackSmallest)){
+          console.log("good move") 
+          return true
+        }
+
+        else {console.log ("bad move");
+          return false;}
+
+ 
 }
 
 // What is a win in Towers of Hanoi? When should this function run?
 const checkForWin = () => {
-  // Your code here
+  // set to allow win if all disks are on Tower B or C.
 
-}
+  const iterator=stacks.b.values();
+  const iterator2=stacks.c.values();
+  let diskTotalValue =0;
+  
+  //check tower B
+  
+  for (const value of iterator){
+    diskTotalValue=diskTotalValue+value}
+    if (diskTotalValue==10){
+        console.log("winner")
+        return true;    }
+ 
+  //reset total to test next tower
+  diskTotalValue=0;
+    
+
+  //test tower C
+    for (const value of iterator2){
+      diskTotalValue=diskTotalValue+value}
+          if (diskTotalValue==10){
+          console.log("winner")
+          return true    
+      }      
+   else {return false;}
+  }
+   
+
 
 // When is this function called? What should it do with its argument?
 const towersOfHanoi = (startStack, endStack) => {
   // Your code here
+  //start to validate if input was an exceptable value
+  const validReply =['a','b','c']
+  const iterator = validReply.values()
+  let goodInput1=0;
+  let goodInput2=0;
+                                          //loop through and check values
+  for (const value of iterator){
+    if (value == startStack){goodInput1++}
+    if (value == endStack){goodInput2++}}
+                                          //if both inputs are good the two should add to 2.
+            if ((goodInput1+goodInput2)==2){
+              goodInput1=0;
+              goodInput2=0; }
+                                            //if inputs are bad console.log and return
+            else {console.log ("Bad Input Try again"  )
+                  goodInput1=0;
+                  goodInput2=0;
+                  return "Bad Input"}
+   //end of checking for proper inputs
+   //check not for legal move
+  let checkIfLegal = isLegal(startStack, endStack);
+    if (!checkIfLegal){
+      console.log ("Not a legal Move.  Try Again!")
+      return false;
+    }
 
-}
+    //now move on board
+    movePiece(startStack,endStack);
+    checkForWin();
+  }
+
 
 const getPrompt = () => {
   printStacks();
