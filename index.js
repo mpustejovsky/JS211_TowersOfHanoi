@@ -80,7 +80,6 @@ const pickUpStone = (rowID) => {
   console.log ("Stone picked up");
   stone=null;  
   stone = selectedRow.removeChild(selectedRow.lastChild);
-
   //some times the computer misses the click on the tower  added short delay and second time 
   // get info if the computer does not recognize stone.id as a string.
   for (let x=0; x<5000; x++){let nothingDelay;}

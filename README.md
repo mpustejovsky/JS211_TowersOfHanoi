@@ -1,3 +1,55 @@
+Code Plan:
+
+Rules:
+•	Be able to move disks to different towers.
+•	All start on  tower A and must end in proper order on Tower B or C
+•	All stacked from biggest on bottom to littlest on top at start and at end
+
+
+Illegal Moves:
+•	Cant place larger disk on top of smaller disk
+•	Move one at a time
+
+Plan:
+1.	Have an object of the three towers.  Three keys in the object called a (for tower a), b (for tower b), and c (for tower c).  And pair the disks with the proper tower as they are moved.
+2.	When a disk is requested to move from one tower to the next:
+  a.	Determine what other disk is already on the tower it is moving to.
+  b.	Determine if the disk moving to the tower is smaller than the largest one currently on the tower or if the tower is empty.  And only allow the move if legal.  Return illegal move it has a larger one on it.
+  c.	If it can move determine what position it will go to into. And store it.
+3.	Check for win after move.  Retrun false if no win, or true if there is a win
+4.  Prompt for next move after check for win
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_____________________________Original Info Below_________________________
 # JS211_Towers of Hanoi[![CircleCI](https://circleci.com/gh/AustinCodingAcademy/javascript-workbook/tree/gh-pages.svg?style=svg)](https://circleci.com/gh/AustinCodingAcademy/javascript-workbook/tree/gh-pages)
 
 ![](http://en.gravatar.com/userimage/107370100/a08594145564536138dfaaf072c7b241.png)
